@@ -1,0 +1,27 @@
+---
+import type { Lang } from '../../i18n/ui';
+import type { RouteId } from '../../i18n/routes';
+import { t } from '../../i18n/utils';
+import Ornament from '../ornaments/Ornament.astro';
+import LangSwitcher from './LangSwitcher.astro';
+
+interface Props { lang: Lang; routeId: RouteId }
+
+const { lang, routeId } = Astro.props;
+const tr = t(lang);
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container inner">
+    <Ornament id="divider-moon" width={240} height={24} />
+    <p class="small">© {year} {tr('site.name')}. {tr('footer.rights')}</p>
+    <LangSwitcher lang={lang} routeId={routeId} />
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding-block: var(--space-8); color: var(--realm-text-muted); }
+  .inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); text-align: center; }
+  .inner :global(.ornament) { color: var(--realm-accent); max-width: 100%; height: auto; }
+  .small { font-size: var(--font-size-sm); margin: 0; }
+</style>

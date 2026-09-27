@@ -1,0 +1,19 @@
+---
+import catalog from '../../../design/ornaments.json';
+
+interface Props {
+  id: string;
+  size?: number;        // iconos cuadrados
+  width?: number;       // divisores y ornamentos no cuadrados (ej. 240x24)
+  height?: number;
+  class?: string;
+  title?: string;       // solo si el ornamento es informativo
+}
+
+const { id, size = 24, width = size, height = size, class: cls, title } = Astro.props;
+const item = catalog.static.find((o) => o.id === id);
+if (!item) throw new Error(`Ornamento desconocido: ${id}`);
+let svg = item.svg.replace('<svg ', `<svg width="${width}" height="${height}" class="ornament ${cls ?? ''}" `);
+if (title) svg = svg.replace("aria-hidden='true'", "role='img'").replace('>', `><title>${title}</title>`);
+---
+<Fragment set:html={svg} />

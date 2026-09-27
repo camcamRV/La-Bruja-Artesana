@@ -1,0 +1,574 @@
+{
+  "$description": "La Bruja Artesana · catálogo de ornamentos v1.0.0. Todos los SVG usan currentColor (heredan --realm-accent). Decorativos: aria-hidden='true' y focusable='false'. Si un ornamento transmite información (fase lunar real, glifo de planeta), lleva <title> localizado.",
+  "version": "1.0.0",
+  "rules": {
+    "color": "Solo oro (gold.500 o gold.300) sobre temas oscuros; gold.700 sobre pergamino. Nunca colores del aura en ornamentos.",
+    "focal": "Máximo 1 ornamento focal (astrolabio, arco, luna grande) por viewport.",
+    "density": "Los ornamentos acompañan contenido; nunca rellenan huecos. Si se quita y nada se pierde, se quita.",
+    "truth": "Constelaciones decorativas se dibujan con datos reales IAU (public/data/sky). Fases lunares mostradas como dato se calculan; las decorativas se marcan decorative: true y no usan una fase fechada.",
+    "stroke": "Trazos finos: 0.75 (hair), 1.25 (fine), 2 (bold). Con vector-effect='non-scaling-stroke' en ornamentos escalables.",
+    "sizes": "Tamaños permitidos: 12, 16, 24, 32, 48, 96, 160px, o fluido en marcos y astrolabio."
+  },
+  "static": [
+    {
+      "id": "moon-crescent",
+      "name": {
+        "es": "Luna creciente",
+        "en": "Crescent moon"
+      },
+      "use": "Logotipo secundario, separador de secciones, icono de Calendario lunar, favicon.",
+      "sizes": [
+        16,
+        24,
+        32,
+        48,
+        96
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='currentColor' aria-hidden='true' focusable='false'><path d='M32 5.7A20 20 0 1 0 32 42.3A19 19 0 0 1 32 5.7Z'/></svg>"
+    },
+    {
+      "id": "moon-crescent-line",
+      "name": {
+        "es": "Luna creciente (línea)",
+        "en": "Crescent moon (outline)"
+      },
+      "use": "Iconografía de navegación y botones.",
+      "sizes": [
+        16,
+        24,
+        32
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='currentColor' stroke-width='1.25' stroke-linejoin='round' vector-effect='non-scaling-stroke' aria-hidden='true' focusable='false'><path d='M32 5.7A20 20 0 1 0 32 42.3A19 19 0 0 1 32 5.7Z'/></svg>"
+    },
+    {
+      "id": "sparkle-4",
+      "name": {
+        "es": "Destello de 4 puntas",
+        "en": "Four-point sparkle"
+      },
+      "use": "Estrella base: viñetas, fin de artículo, marca de posición en tiradas, starfield (5%).",
+      "sizes": [
+        12,
+        16,
+        24,
+        32
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' focusable='false'><path d='M12 0C12.8 7.2 16.8 11.2 24 12C16.8 12.8 12.8 16.8 12 24C11.2 16.8 7.2 12.8 0 12C7.2 11.2 11.2 7.2 12 0Z'/></svg>"
+    },
+    {
+      "id": "star-8",
+      "name": {
+        "es": "Estrella de 8 puntas",
+        "en": "Eight-point star"
+      },
+      "use": "Estrella focal: sobre títulos del hero, centro del astrolabio, reverso de carta.",
+      "sizes": [
+        24,
+        32,
+        48,
+        96
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' aria-hidden='true' focusable='false'><path d='M12 0C12.8 7.2 16.8 11.2 24 12C16.8 12.8 12.8 16.8 12 24C11.2 16.8 7.2 12.8 0 12C7.2 11.2 11.2 7.2 12 0Z'/><path transform='rotate(45 12 12)' d='M12 5C12.4 9.6 14.4 11.6 19 12C14.4 12.4 12.4 14.4 12 19C11.6 14.4 9.6 12.4 5 12C9.6 11.6 11.6 9.6 12 5Z'/></svg>"
+    },
+    {
+      "id": "sun-rays",
+      "name": {
+        "es": "Sol radiante",
+        "en": "Radiant sun"
+      },
+      "use": "Carta del Día, signo solar en Carta Natal y Tu Esencia, estado 'día' del calendario.",
+      "sizes": [
+        16,
+        24,
+        32,
+        48
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.25' stroke-linecap='round' vector-effect='non-scaling-stroke' aria-hidden='true' focusable='false'><circle cx='12' cy='12' r='4.5'/><path d='M12 5V1M19 12H23M12 19V23M5 12H1M16.95 7.05L19.78 4.22M16.95 16.95L19.78 19.78M7.05 16.95L4.22 19.78M7.05 7.05L4.22 4.22'/></svg>"
+    },
+    {
+      "id": "divider-star",
+      "name": {
+        "es": "Filete con estrella",
+        "en": "Star rule"
+      },
+      "use": "Separador entre bloques dentro de una lámina y bajo títulos de sección. Ancho fijo 240px o 160px.",
+      "sizes": [
+        "160x16",
+        "240x24"
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 24' fill='currentColor' aria-hidden='true' focusable='false'><path d='M0 12H98M142 12H240' fill='none' stroke='currentColor' stroke-width='1' vector-effect='non-scaling-stroke'/><circle cx='104' cy='12' r='1.5'/><circle cx='136' cy='12' r='1.5'/><path transform='translate(108 0)' d='M12 0C12.8 7.2 16.8 11.2 24 12C16.8 12.8 12.8 16.8 12 24C11.2 16.8 7.2 12.8 0 12C7.2 11.2 11.2 7.2 12 0Z'/></svg>"
+    },
+    {
+      "id": "divider-moon",
+      "name": {
+        "es": "Filete con luna",
+        "en": "Moon rule"
+      },
+      "use": "Separador entre secciones de página (no dentro de láminas).",
+      "sizes": [
+        "240x24"
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 24' fill='currentColor' aria-hidden='true' focusable='false'><path d='M0 12H100M140 12H240' fill='none' stroke='currentColor' stroke-width='1' vector-effect='non-scaling-stroke'/><path transform='translate(108 0) scale(0.5)' d='M32 5.7A20 20 0 1 0 32 42.3A19 19 0 0 1 32 5.7Z'/></svg>"
+    },
+    {
+      "id": "corner-flourish",
+      "name": {
+        "es": "Esquinero",
+        "en": "Corner flourish"
+      },
+      "use": "Esquinas de láminas destacadas (resultado de herramienta, paquete La Lectura). Rotar 90/180/270 para las otras esquinas.",
+      "sizes": [
+        32,
+        48
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48' fill='none' stroke='currentColor' stroke-width='1' vector-effect='non-scaling-stroke' aria-hidden='true' focusable='false'><path d='M2 46V14A12 12 0 0 1 14 2H46'/><path d='M8 46V18A10 10 0 0 1 18 8H46' opacity='0.5'/><path fill='currentColor' stroke='none' transform='translate(9.2 9.2) scale(0.4)' d='M12 0C12.8 7.2 16.8 11.2 24 12C16.8 12.8 12.8 16.8 12 24C11.2 16.8 7.2 12.8 0 12C7.2 11.2 11.2 7.2 12 0Z'/></svg>"
+    },
+    {
+      "id": "arch-frame",
+      "name": {
+        "es": "Marco de arco",
+        "en": "Arch frame"
+      },
+      "use": "Superposición del hero y de la portada de cada herramienta. Proporción fija 2:3. Para contenedores fluidos usar radius.arch en CSS con este SVG solo como filete.",
+      "sizes": [
+        "fluid 2:3"
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 300' fill='none' stroke='currentColor' aria-hidden='true' focusable='false'><path d='M4 296V100A96 96 0 0 1 196 100V296Z' stroke-width='1.25' vector-effect='non-scaling-stroke'/><path d='M12 288V100A88 88 0 0 1 188 100V288Z' stroke-width='0.75' opacity='0.5' vector-effect='non-scaling-stroke'/><path fill='currentColor' stroke='none' transform='translate(90 20) scale(0.8333)' d='M12 0C12.8 7.2 16.8 11.2 24 12C16.8 12.8 12.8 16.8 12 24C11.2 16.8 7.2 12.8 0 12C7.2 11.2 11.2 7.2 12 0Z'/></svg>"
+    },
+    {
+      "id": "star-dot",
+      "name": {
+        "es": "Punto estelar",
+        "en": "Star dot"
+      },
+      "use": "Estrellas pequeñas del starfield y marcadores de lista.",
+      "sizes": [
+        4,
+        6,
+        8
+      ],
+      "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' fill='currentColor' aria-hidden='true' focusable='false'><circle cx='4' cy='4' r='2'/></svg>"
+    }
+  ],
+  "generative": [
+    {
+      "id": "moon-phase",
+      "name": {
+        "es": "Fase lunar",
+        "en": "Moon phase"
+      },
+      "component": "src/components/ornaments/MoonPhase.astro (y MoonPhase.tsx para islas)",
+      "informational": true,
+      "props": {
+        "illumination": "number 0..1, fracción iluminada real desde src/data/moon",
+        "waxing": "boolean",
+        "hemisphere": "'north' | 'south' (sur invierte horizontalmente)",
+        "size": "number px",
+        "title": "l10n obligatorio, ej. 'Luna creciente gibosa, 78% iluminada'"
+      },
+      "algorithm": [
+        "r = size/2 - 1; c = size/2; rx = r * |1 - 2 * illumination|",
+        "Disco oscuro: circle(c, c, r) con fill var(--realm-surface-raised) y stroke gold hairline.",
+        "Creciente (waxing): M c,c-r  A r r 0 0 1 c,c+r  A rx r 0 0 S c,c-r  Z, con S = 1 si illumination > 0.5, si no 0.",
+        "Menguante: M c,c-r  A r r 0 0 0 c,c+r  A rx r 0 0 S c,c-r  Z, con S = 0 si illumination > 0.5, si no 1.",
+        "Hemisferio sur: transform='scale(-1 1)' con transform-origin centro.",
+        "illumination < 0.005: solo el disco oscuro (luna nueva). > 0.995: disco completo en oro."
+      ],
+      "fill": "gold.300 para la parte iluminada"
+    },
+    {
+      "id": "astrolabe",
+      "name": {
+        "es": "Astrolabio",
+        "en": "Astrolabe"
+      },
+      "component": "src/components/ornaments/Astrolabe.astro",
+      "informational": false,
+      "use": "Ornamento focal del hero, reverso de las cartas de tarot, fondo de la rueda de Carta Natal (sin glifos ahí, la rueda real los pone).",
+      "props": {
+        "size": "fluid, max 640px",
+        "rings": [
+          1.0,
+          0.86,
+          0.62,
+          0.3
+        ],
+        "majorTicks": {
+          "count": 12,
+          "from": 0.86,
+          "to": 1.0,
+          "stroke": "fine"
+        },
+        "minorTicks": {
+          "count": 72,
+          "from": 0.93,
+          "to": 1.0,
+          "stroke": "hair"
+        },
+        "starPolygon": {
+          "points": 12,
+          "step": 5,
+          "radius": 0.62,
+          "stroke": "hair",
+          "opacity": 0.6
+        },
+        "innerPolygon": {
+          "points": 6,
+          "step": 2,
+          "radius": 0.3,
+          "stroke": "hair",
+          "opacity": 0.5
+        },
+        "center": "star-8 a 12% del diámetro",
+        "zodiacGlyphs": "opcional, entre 0.86 y 1.0, font.family.symbols, solo como ornamento",
+        "rotate": "0 por defecto; en hero puede girar 360° en 240s, detenido con prefers-reduced-motion"
+      },
+      "geometry": "Punto i del polígono {n/k}: ángulo = -90° + i * 360°/n; se une i con (i + k) mod n."
+    },
+    {
+      "id": "starfield",
+      "name": {
+        "es": "Campo estelar",
+        "en": "Starfield"
+      },
+      "component": "src/components/ornaments/StarField.astro",
+      "informational": false,
+      "render": "SVG generado en build con seeded(seed) de src/lib/random.ts. Resultado estático e idéntico en cada carga. z-index starfield, position fixed, pointer-events none.",
+      "props": {
+        "seed": "number, uno por reino (noche 7, medianoche 13, hero 21)",
+        "width": 1600,
+        "height": 1000,
+        "densityToken": "ornament.starfield.density"
+      },
+      "distribution": [
+        {
+          "share": 0.7,
+          "shape": "star-dot",
+          "radius": [
+            0.5,
+            1.0
+          ],
+          "opacity": [
+            0.25,
+            0.55
+          ]
+        },
+        {
+          "share": 0.25,
+          "shape": "star-dot",
+          "radius": [
+            1.0,
+            1.6
+          ],
+          "opacity": [
+            0.45,
+            0.85
+          ]
+        },
+        {
+          "share": 0.05,
+          "shape": "sparkle-4",
+          "size": [
+            6,
+            12
+          ],
+          "opacity": [
+            0.6,
+            0.9
+          ]
+        }
+      ],
+      "twinkle": "ornament.starfield.twinkleShare de las estrellas con animación de opacidad, duración aleatoria entre twinkleMin y twinkleMax, delay aleatorio. Desactivado con prefers-reduced-motion.",
+      "mobile": "Por debajo de 768px, densidad al 60% y sin twinkle."
+    },
+    {
+      "id": "constellation",
+      "name": {
+        "es": "Constelación decorativa",
+        "en": "Decorative constellation"
+      },
+      "component": "src/components/ornaments/Constellation.astro",
+      "informational": true,
+      "use": "Acento de sección. Siempre una constelación real de las 88 IAU con su nombre en <title> y, al pasar el cursor o enfocar, tooltip con nombre es/en.",
+      "props": {
+        "iau": "abreviatura IAU, ej. 'Cas', 'Leo', 'Lyr'",
+        "stroke": "hair",
+        "starSize": "proporcional a la magnitud: r = max(0.8, 3.2 - 0.5 * mag)",
+        "projection": "estereográfica centrada en la constelación (d3-geo)"
+      },
+      "suggested": {
+        "home": "Cas",
+        "tarot": "Lyr",
+        "runas": "UMa",
+        "astrologia": "Tau",
+        "magia": "Cyg",
+        "biblioteca": "Aql",
+        "obras": "Crv"
+      }
+    },
+    {
+      "id": "tarot-back",
+      "name": {
+        "es": "Reverso de carta",
+        "en": "Card back"
+      },
+      "component": "src/components/ornaments/TarotBack.astro",
+      "informational": false,
+      "composition": "Fondo plum.800, doble filete gold (inset 6px y 10px), astrolabio centrado al 70% del ancho, star-8 en el centro, 4 sparkle-4 en las esquinas interiores. Simétrico vertical para que no revele orientación (invertida)."
+    },
+    {
+      "id": "tarot-front",
+      "name": {
+        "es": "Anverso de carta",
+        "en": "Card face"
+      },
+      "component": "src/components/ornaments/TarotCard.astro",
+      "informational": true,
+      "use": "Anverso de las 78 cartas. Baraja propia de La Bruja Artesana dibujada en código. Sustituye a los escaneos RWS de 1909.",
+      "props": {
+        "id": "id del registro en src/data/tarot/rws.json, ej. 'major-00', 'cups-07'",
+        "lang": "'es' | 'en', para el nombre",
+        "reversed": "boolean. Rota el cuerpo 180°; el nombre no rota (ver 7.3)",
+        "title": "l10n obligatorio: nombre de la carta, y 'invertida' si aplica"
+      },
+      "canvas": "viewBox 0 0 220 380 (proporción 11:19). Fondo plum.800, doble filete gold (inset 6 y 10), esquinas con corner-flourish a 24px.",
+      "composition": {
+        "major": "Numeral romano en Cinzel arriba (0 = 0, sin 'cero' escrito). Emblema central en un medallión circular (astrolabio al 45% de opacidad detrás). Nombre en Cinzel en la cartela inferior.",
+        "pips": "As a Diez: símbolo del palo repetido según el número, en las disposiciones clásicas de naipe (simétricas vertical). El As lleva un único símbolo grande dentro del medallión.",
+        "court": "Sota, Caballero, Reina, Rey: símbolo del palo en el medallión + emblema de rango (Sota: star-8; Caballero: sparkle-4 doble; Reina: moon-crescent; Rey: sun-rays) sobre el medallión. Nombre en la cartela."
+      },
+      "emblems": "Los 22 emblemas de los arcanos mayores son geométricos y se diseñan en el Paso 4 del roadmap (componentes del sistema de diseño) como SVG en este archivo, bajo 'majorEmblems'. No representan escenas ni personajes. Hasta entonces, el medallión muestra solo el numeral.",
+      "rules": [
+        "Solo oro sobre ciruela. Nunca colores del aura (son capas de conocimiento, no decoración).",
+        "Sin escenas figurativas, sin personajes, sin imitar la composición de las cartas RWS.",
+        "Sin imágenes generadas con IA.",
+        "Mismo trazo que el resto de ornamentos (hair 0.75, fine 1.25)."
+      ]
+    },
+    {
+      "id": "suit-symbol",
+      "name": {
+        "es": "Símbolo de palo",
+        "en": "Suit symbol"
+      },
+      "component": "src/components/ornaments/SuitSymbol.astro",
+      "informational": true,
+      "props": {
+        "suit": "'wands' | 'cups' | 'swords' | 'pentacles'",
+        "size": "number px",
+        "title": "l10n: Bastos / Wands, Copas / Cups, Espadas / Swords, Oros / Pentacles"
+      },
+      "design": "Cuatro iconos de línea en el estilo de icons.set (stroke fine, currentColor, viewBox 48): bastos = vara con tres brotes; copas = cáliz; espadas = hoja recta con guarda; oros = círculo con pentagrama inscrito. Se dibujan en el Paso 4 del roadmap."
+    }
+  ],
+  "glyphs": {
+    "$description": "Glifos astrológicos. Renderizar con font.family.symbols y U+FE0E para forzar presentación de texto. Con aria-label o texto visible localizado.",
+    "planets": {
+      "sun": {
+        "char": "☉",
+        "es": "Sol",
+        "en": "Sun"
+      },
+      "moon": {
+        "char": "☽",
+        "es": "Luna",
+        "en": "Moon"
+      },
+      "mercury": {
+        "char": "☿",
+        "es": "Mercurio",
+        "en": "Mercury"
+      },
+      "venus": {
+        "char": "♀",
+        "es": "Venus",
+        "en": "Venus"
+      },
+      "mars": {
+        "char": "♂",
+        "es": "Marte",
+        "en": "Mars"
+      },
+      "jupiter": {
+        "char": "♃",
+        "es": "Júpiter",
+        "en": "Jupiter"
+      },
+      "saturn": {
+        "char": "♄",
+        "es": "Saturno",
+        "en": "Saturn"
+      },
+      "uranus": {
+        "char": "♅",
+        "es": "Urano",
+        "en": "Uranus"
+      },
+      "neptune": {
+        "char": "♆",
+        "es": "Neptuno",
+        "en": "Neptune"
+      },
+      "pluto": {
+        "char": "♇",
+        "es": "Plutón",
+        "en": "Pluto"
+      },
+      "meanNode": {
+        "char": "☊",
+        "es": "Nodo norte medio",
+        "en": "Mean north node"
+      }
+    },
+    "signs": {
+      "aries": {
+        "char": "♈",
+        "es": "Aries",
+        "en": "Aries"
+      },
+      "taurus": {
+        "char": "♉",
+        "es": "Tauro",
+        "en": "Taurus"
+      },
+      "gemini": {
+        "char": "♊",
+        "es": "Géminis",
+        "en": "Gemini"
+      },
+      "cancer": {
+        "char": "♋",
+        "es": "Cáncer",
+        "en": "Cancer"
+      },
+      "leo": {
+        "char": "♌",
+        "es": "Leo",
+        "en": "Leo"
+      },
+      "virgo": {
+        "char": "♍",
+        "es": "Virgo",
+        "en": "Virgo"
+      },
+      "libra": {
+        "char": "♎",
+        "es": "Libra",
+        "en": "Libra"
+      },
+      "scorpio": {
+        "char": "♏",
+        "es": "Escorpio",
+        "en": "Scorpio"
+      },
+      "sagittarius": {
+        "char": "♐",
+        "es": "Sagitario",
+        "en": "Sagittarius"
+      },
+      "capricorn": {
+        "char": "♑",
+        "es": "Capricornio",
+        "en": "Capricorn"
+      },
+      "aquarius": {
+        "char": "♒",
+        "es": "Acuario",
+        "en": "Aquarius"
+      },
+      "pisces": {
+        "char": "♓",
+        "es": "Piscis",
+        "en": "Pisces"
+      }
+    },
+    "aspects": {
+      "conjunction": {
+        "char": "☌",
+        "es": "Conjunción",
+        "en": "Conjunction"
+      },
+      "opposition": {
+        "char": "☍",
+        "es": "Oposición",
+        "en": "Opposition"
+      },
+      "trine": {
+        "char": "△",
+        "es": "Trígono",
+        "en": "Trine"
+      },
+      "square": {
+        "char": "□",
+        "es": "Cuadratura",
+        "en": "Square"
+      },
+      "sextile": {
+        "char": "⚹",
+        "es": "Sextil",
+        "en": "Sextile"
+      }
+    }
+  },
+  "icons": {
+    "$description": "Iconos de línea para navegación y UI, estilo grabado: stroke 1.25, esquinas redondeadas, 24px, currentColor. Dibujar con el mismo lenguaje que moon-crescent-line y sun-rays.",
+    "set": [
+      {
+        "id": "tarot",
+        "motif": "Carta 11:19 con sparkle-4 al centro"
+      },
+      {
+        "id": "runes",
+        "motif": "Losa redondeada con la runa Ansuz"
+      },
+      {
+        "id": "astrology",
+        "motif": "Círculo con 12 marcas y un punto"
+      },
+      {
+        "id": "moon",
+        "motif": "moon-crescent-line"
+      },
+      {
+        "id": "magic",
+        "motif": "Vela con llama y dos destellos"
+      },
+      {
+        "id": "sky",
+        "motif": "Tres estrellas unidas por líneas"
+      },
+      {
+        "id": "library",
+        "motif": "Libro abierto con luna en la página"
+      },
+      {
+        "id": "works",
+        "motif": "Libro cerrado con árbol grabado"
+      },
+      {
+        "id": "my-space",
+        "motif": "Arco de puerta"
+      },
+      {
+        "id": "save",
+        "motif": "Marcapáginas con sparkle"
+      },
+      {
+        "id": "share",
+        "motif": "Estrella con tres rayos salientes"
+      },
+      {
+        "id": "download",
+        "motif": "Flecha hacia una línea con punto"
+      },
+      {
+        "id": "close",
+        "motif": "Aspa fina"
+      },
+      {
+        "id": "language",
+        "motif": "Globo terráqueo de latón (meridiano y ecuador)"
+      }
+    ]
+  }
+}

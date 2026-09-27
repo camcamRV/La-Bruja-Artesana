@@ -1,0 +1,121 @@
+---
+import type { Lang } from '../../i18n/ui';
+import type { RouteId } from '../../i18n/routes';
+import { path, t } from '../../i18n/utils';
+import Ornament from '../ornaments/Ornament.astro';
+import LangSwitcher from './LangSwitcher.astro';
+
+interface Props { lang: Lang; routeId: RouteId }
+
+const { lang, routeId } = Astro.props;
+const tr = t(lang);
+const links = [
+  { id: 'explore', label: tr('nav.explore') },
+  { id: 'readings', label: tr('nav.readings') },
+  { id: 'library', label: tr('nav.library') },
+  { id: 'works', label: tr('nav.works') },
+] as const satisfies ReadonlyArray<{ id: RouteId; label: string }>;
+---
+<header class="site-header">
+  <div class="bar container">
+    <a class="brand" href={path('home', lang)} aria-label={tr('a11y.home')}>
+      <Ornament id="moon-crescent" size={24} />
+      <span>{tr('site.name')}</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+      {tr('nav.menu')}
+    </button>
+    <div class="menu" id="site-menu">
+      <nav aria-label={tr('nav.label')}>
+        <ul>
+          {links.map((l) => (
+            <li>
+              <a href={path(l.id, lang)} aria-current={l.id === routeId ? 'page' : undefined}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <LangSwitcher lang={lang} routeId={routeId} />
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = document.getElementById('site-menu');
+  if (toggle && menu) {
+    const set = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      menu.toggleAttribute('data-open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', () => set(toggle.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        set(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky; top: 0; z-index: var(--z-sticky);
+    background: var(--component-nav-bg);
+    backdrop-filter: blur(var(--component-nav-blur));
+    -webkit-backdrop-filter: blur(var(--component-nav-blur));
+    border-bottom: var(--border-hairline);
+  }
+  .bar {
+    min-height: var(--component-nav-height);
+    display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+  }
+  .brand {
+    display: inline-flex; align-items: center; gap: var(--space-3);
+    min-height: 44px;
+    color: var(--realm-accent);
+    font-family: var(--font-family-display);
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-base);
+    letter-spacing: var(--font-letter-spacing-display);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .brand :global(svg) { flex: none; }
+  @media (max-width: 379px) {
+    .brand { font-size: var(--font-size-sm); gap: var(--space-2); }
+  }
+  .menu-toggle {
+    min-height: 44px; padding: 0 var(--space-4);
+    background: transparent; color: var(--realm-text);
+    border: var(--border-hairline); border-radius: var(--radius-sm);
+    font: inherit; cursor: pointer;
+  }
+  .menu {
+    display: none;
+    position: fixed; inset: var(--component-nav-height) 0 0 0;
+    padding: var(--space-6) var(--space-gutter);
+    background: var(--realm-bg-deep);
+    flex-direction: column; gap: var(--space-6);
+    overflow-y: auto;
+  }
+  .menu[data-open] { display: flex; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+  li a {
+    display: inline-flex; align-items: center; min-height: 44px;
+    color: var(--realm-text); text-decoration: none;
+    font-size: var(--font-size-lg); font-weight: var(--font-weight-medium);
+  }
+  li a:hover, li a[aria-current='page'] { color: var(--realm-accent); }
+
+  @media (min-width: 1024px) {
+    .menu-toggle { display: none; }
+    .menu {
+      display: flex; position: static; padding: 0; background: none;
+      flex-direction: row; align-items: center; gap: var(--space-6); overflow: visible;
+    }
+    ul { flex-direction: row; gap: var(--space-5); }
+    li a { font-size: var(--font-size-base); }
+  }
+</style>

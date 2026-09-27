@@ -1,0 +1,22 @@
+---
+import type { Lang } from '../../i18n/ui';
+import type { RouteId } from '../../i18n/routes';
+import { otherLang, path, t } from '../../i18n/utils';
+
+interface Props { lang: Lang; routeId: RouteId }
+
+const { lang, routeId } = Astro.props;
+const target = otherLang(lang);
+---
+<a class="lang-switch" href={path(routeId, target)} hreflang={target} lang={target}>
+  {t(lang)('lang.switch')}
+</a>
+
+<style>
+  .lang-switch {
+    display: inline-flex; align-items: center; min-height: 44px;
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+  }
+  .lang-switch:hover { text-decoration: underline; }
+</style>

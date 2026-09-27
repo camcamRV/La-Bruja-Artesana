@@ -1,0 +1,356 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$description": "La Bruja Artesana · design tokens v1.0.0. Formato DTCG ($value, $type). Los alias usan {grupo.token}. Se compilan a CSS custom properties con scripts/build-tokens.ts.",
+  "meta": {
+    "name": { "$value": "La Bruja Artesana", "$type": "string" },
+    "version": { "$value": "1.0.0", "$type": "string" },
+    "concept": { "$value": "Observatorio de la artesana: cielo nocturno, oro grabado, pergamino y los cuatro colores del aura.", "$type": "string" }
+  },
+
+  "color": {
+    "plum": {
+      "$description": "Noche ciruela. Fondo principal (Tarot, Runas, Magia, Home).",
+      "950": { "$value": "#170E1B", "$type": "color" },
+      "900": { "$value": "#1F1424", "$type": "color", "$description": "Fondo base del tema noche" },
+      "800": { "$value": "#2A1C30", "$type": "color", "$description": "Superficie 1" },
+      "700": { "$value": "#36243D", "$type": "color", "$description": "Superficie 2" },
+      "600": { "$value": "#4A3252", "$type": "color" },
+      "500": { "$value": "#6B407A", "$type": "color", "$description": "Nebulosa, solo en gradientes" }
+    },
+    "navy": {
+      "$description": "Medianoche. Fondo de las secciones astronómicas (Cielo, Luna, Carta Natal, Astrocartografía).",
+      "950": { "$value": "#0A101C", "$type": "color" },
+      "900": { "$value": "#0E1626", "$type": "color", "$description": "Fondo base del tema medianoche" },
+      "800": { "$value": "#16213A", "$type": "color" },
+      "700": { "$value": "#1E2C4A", "$type": "color" },
+      "600": { "$value": "#2B3D63", "$type": "color" }
+    },
+    "gold": {
+      "$description": "Oro grabado. Ornamentos, bordes, acentos, botón primario. Nunca como texto sobre pergamino (usar gold.700).",
+      "200": { "$value": "#F1E2B8", "$type": "color" },
+      "300": { "$value": "#E6CC8F", "$type": "color", "$description": "Brillo, foco, estrellas" },
+      "500": { "$value": "#C9A961", "$type": "color", "$description": "Oro base. 7.9:1 sobre plum.900" },
+      "600": { "$value": "#9C7A3C", "$type": "color" },
+      "700": { "$value": "#7A5C22", "$type": "color", "$description": "Oro para texto sobre pergamino. 5.2:1 sobre parchment.100" }
+    },
+    "parchment": {
+      "$description": "Pergamino. Texto sobre fondos oscuros y fondo del tema de lectura.",
+      "50": { "$value": "#FAF5EA", "$type": "color" },
+      "100": { "$value": "#F3EBDA", "$type": "color", "$description": "Fondo del tema pergamino" },
+      "200": { "$value": "#EDE3CF", "$type": "color", "$description": "Texto principal sobre oscuro" },
+      "300": { "$value": "#D8C3A0", "$type": "color", "$description": "Beige del aura" },
+      "400": { "$value": "#BFB2A0", "$type": "color", "$description": "Texto secundario sobre oscuro. 8.5:1 sobre plum.900" },
+      "500": { "$value": "#9A8C79", "$type": "color" }
+    },
+    "aura": {
+      "$description": "Los cuatro colores del aura. Codifican el tipo de conocimiento (ver semantic.layer).",
+      "purple": { "$value": "#4B2A5E", "$type": "color", "$description": "Misterio, magia, intuición" },
+      "green": { "$value": "#3F5A3A", "$type": "color", "$description": "Crecimiento, naturaleza" },
+      "beige": { "$value": "#D8C3A0", "$type": "color", "$description": "Equilibrio, verdad, arraigo" },
+      "teal": { "$value": "#1F5B5B", "$type": "color", "$description": "Claridad, profundidad" }
+    },
+    "feedback": {
+      "error": { "$value": "#E08A7A", "$type": "color", "$description": "Sobre oscuro. Siempre acompañado de texto" },
+      "errorOnLight": { "$value": "#9E3B2C", "$type": "color" },
+      "success": { "$value": "#9CC49A", "$type": "color" },
+      "warning": { "$value": "#E6CC8F", "$type": "color" }
+    },
+    "alpha": {
+      "goldHairline": { "$value": "rgba(201, 169, 97, 0.40)", "$type": "color" },
+      "goldFaint": { "$value": "rgba(201, 169, 97, 0.18)", "$type": "color" },
+      "goldGlow": { "$value": "rgba(230, 204, 143, 0.28)", "$type": "color" },
+      "scrim": { "$value": "rgba(10, 6, 12, 0.72)", "$type": "color" },
+      "shadow": { "$value": "rgba(0, 0, 0, 0.45)", "$type": "color" }
+    }
+  },
+
+  "theme": {
+    "$description": "Tres reinos. Se activan con data-realm en <html> (reino de la página) o en una <section>. Los tokens que dependen del reino (var(--realm-*)) se recalculan en cada elemento con data-realm; ver scripts/build-tokens.ts.",
+    "noche": {
+      "bg": { "$value": "{color.plum.900}", "$type": "color" },
+      "bgDeep": { "$value": "{color.plum.950}", "$type": "color" },
+      "surface": { "$value": "{color.plum.800}", "$type": "color" },
+      "surfaceRaised": { "$value": "{color.plum.700}", "$type": "color" },
+      "text": { "$value": "{color.parchment.200}", "$type": "color" },
+      "textMuted": { "$value": "{color.parchment.400}", "$type": "color" },
+      "accent": { "$value": "{color.gold.500}", "$type": "color" },
+      "accentStrong": { "$value": "{color.gold.300}", "$type": "color" },
+      "border": { "$value": "{color.alpha.goldHairline}", "$type": "color" },
+      "nebula": { "$value": "{color.plum.500}", "$type": "color" }
+    },
+    "medianoche": {
+      "bg": { "$value": "{color.navy.900}", "$type": "color" },
+      "bgDeep": { "$value": "{color.navy.950}", "$type": "color" },
+      "surface": { "$value": "{color.navy.800}", "$type": "color" },
+      "surfaceRaised": { "$value": "{color.navy.700}", "$type": "color" },
+      "text": { "$value": "{color.parchment.200}", "$type": "color" },
+      "textMuted": { "$value": "{color.parchment.400}", "$type": "color" },
+      "accent": { "$value": "{color.gold.500}", "$type": "color" },
+      "accentStrong": { "$value": "{color.gold.300}", "$type": "color" },
+      "border": { "$value": "{color.alpha.goldHairline}", "$type": "color" },
+      "nebula": { "$value": "{color.aura.teal}", "$type": "color" }
+    },
+    "pergamino": {
+      "$description": "Tema claro de lectura: Biblioteca Oculta, glosario, legal, vista de impresión.",
+      "bg": { "$value": "{color.parchment.100}", "$type": "color" },
+      "bgDeep": { "$value": "{color.parchment.300}", "$type": "color" },
+      "surface": { "$value": "{color.parchment.50}", "$type": "color" },
+      "surfaceRaised": { "$value": "#FFFFFF", "$type": "color" },
+      "text": { "$value": "{color.plum.800}", "$type": "color" },
+      "textMuted": { "$value": "#5E4D5F", "$type": "color" },
+      "accent": { "$value": "{color.gold.700}", "$type": "color" },
+      "accentStrong": { "$value": "{color.aura.purple}", "$type": "color" },
+      "border": { "$value": "rgba(122, 92, 34, 0.35)", "$type": "color" },
+      "nebula": { "$value": "{color.parchment.300}", "$type": "color" }
+    }
+  },
+
+  "semantic": {
+    "layer": {
+      "$description": "Regla de datos hecha color: cada bloque de resultado declara su capa de conocimiento. Siempre con etiqueta de texto, nunca solo color.",
+      "fact": { "$value": "{color.aura.beige}", "$type": "color", "$description": "Hecho histórico o lingüístico con fuente" },
+      "astronomy": { "$value": "{color.aura.teal}", "$type": "color", "$description": "Dato astronómico calculado" },
+      "botany": { "$value": "{color.aura.green}", "$type": "color", "$description": "Información botánica y de seguridad" },
+      "esoteric": { "$value": "{color.aura.purple}", "$type": "color", "$description": "Interpretación esotérica según tradición" },
+      "editorial": { "$value": "{color.gold.700}", "$type": "color", "$description": "Voz y método de la autora. gold.700 da 4.88:1 con parchment.200 (gold.600 daba 3.13:1 y fallaba AA)" }
+    }
+  },
+
+  "font": {
+    "family": {
+      "display": { "$value": ["Cinzel", "Trajan Pro", "Georgia", "serif"], "$type": "fontFamily", "$description": "Capitales romanas grabadas. Títulos H1 y H2, logotipo, nombres de cartas. Nunca en párrafos." },
+      "body": { "$value": ["EB Garamond", "Garamond", "Georgia", "serif"], "$type": "fontFamily", "$description": "Texto corrido, H3 a H6, UI." },
+      "script": { "$value": ["Pinyon Script", "cursive"], "$type": "fontFamily", "$description": "Notas manuscritas. Máximo una por vista, mínimo 1.5rem, nunca para información esencial." },
+      "symbols": { "$value": ["Noto Sans Symbols", "Segoe UI Symbol", "sans-serif"], "$type": "fontFamily", "$description": "Glifos astrológicos con variante de texto (U+FE0E). Subset symbols." },
+      "runic": { "$value": ["Noto Sans Runic", "Segoe UI Historic", "serif"], "$type": "fontFamily", "$description": "Caracteres del Elder Futhark (U+16A0-16F8). Subset runic." }
+    },
+    "weight": {
+      "regular": { "$value": 400, "$type": "fontWeight" },
+      "medium": { "$value": 500, "$type": "fontWeight" },
+      "semibold": { "$value": 600, "$type": "fontWeight" },
+      "bold": { "$value": 700, "$type": "fontWeight" }
+    },
+    "size": {
+      "$description": "Escala modular 1.25 sobre 18px (1.125rem).",
+      "xs": { "$value": "0.8125rem", "$type": "dimension" },
+      "sm": { "$value": "0.9375rem", "$type": "dimension" },
+      "base": { "$value": "1.125rem", "$type": "dimension" },
+      "lg": { "$value": "1.40625rem", "$type": "dimension" },
+      "xl": { "$value": "1.7578rem", "$type": "dimension" },
+      "2xl": { "$value": "2.1973rem", "$type": "dimension" },
+      "3xl": { "$value": "2.7466rem", "$type": "dimension" },
+      "4xl": { "$value": "3.4332rem", "$type": "dimension" },
+      "display": { "$value": "clamp(2.75rem, 5.5vw + 1rem, 5.5rem)", "$type": "dimension" }
+    },
+    "lineHeight": {
+      "tight": { "$value": 1.1, "$type": "number" },
+      "heading": { "$value": 1.2, "$type": "number" },
+      "body": { "$value": 1.65, "$type": "number" },
+      "loose": { "$value": 1.8, "$type": "number" }
+    },
+    "letterSpacing": {
+      "display": { "$value": "0.04em", "$type": "dimension" },
+      "engraved": { "$value": "0.14em", "$type": "dimension", "$description": "Solo Cinzel en tamaños pequeños (sm, xs)" },
+      "body": { "$value": "0", "$type": "dimension" }
+    },
+    "measure": {
+      "prose": { "$value": "66ch", "$type": "dimension" },
+      "narrow": { "$value": "48ch", "$type": "dimension" }
+    }
+  },
+
+  "typography": {
+    "display": { "$type": "typography", "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.display}", "fontWeight": 400, "lineHeight": "{font.lineHeight.tight}", "letterSpacing": "{font.letterSpacing.display}" } },
+    "h1": { "$type": "typography", "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.4xl}", "fontWeight": 400, "lineHeight": "{font.lineHeight.heading}", "letterSpacing": "{font.letterSpacing.display}" } },
+    "h2": { "$type": "typography", "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.3xl}", "fontWeight": 400, "lineHeight": "{font.lineHeight.heading}", "letterSpacing": "{font.letterSpacing.display}" } },
+    "h3": { "$type": "typography", "$value": { "fontFamily": "{font.family.body}", "fontSize": "{font.size.2xl}", "fontWeight": 500, "lineHeight": "{font.lineHeight.heading}", "letterSpacing": "0" } },
+    "h4": { "$type": "typography", "$value": { "fontFamily": "{font.family.body}", "fontSize": "{font.size.xl}", "fontWeight": 500, "lineHeight": "{font.lineHeight.heading}", "letterSpacing": "0" } },
+    "lead": { "$type": "typography", "$value": { "fontFamily": "{font.family.body}", "fontSize": "{font.size.lg}", "fontWeight": 400, "lineHeight": 1.55, "letterSpacing": "0", "fontStyle": "italic" } },
+    "body": { "$type": "typography", "$value": { "fontFamily": "{font.family.body}", "fontSize": "{font.size.base}", "fontWeight": 400, "lineHeight": "{font.lineHeight.body}", "letterSpacing": "0" } },
+    "small": { "$type": "typography", "$value": { "fontFamily": "{font.family.body}", "fontSize": "{font.size.sm}", "fontWeight": 400, "lineHeight": 1.5, "letterSpacing": "0" } },
+    "engraved": { "$type": "typography", "$description": "Rótulos grabados (botones, nombre de posición en una tirada). No como eyebrow sobre cada título.", "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.sm}", "fontWeight": 600, "lineHeight": 1.3, "letterSpacing": "{font.letterSpacing.engraved}" } },
+    "script": { "$type": "typography", "$value": { "fontFamily": "{font.family.script}", "fontSize": "{font.size.2xl}", "fontWeight": 400, "lineHeight": 1.2, "letterSpacing": "0" } }
+  },
+
+  "space": {
+    "$description": "Base 4px.",
+    "0": { "$value": "0", "$type": "dimension" },
+    "1": { "$value": "0.25rem", "$type": "dimension" },
+    "2": { "$value": "0.5rem", "$type": "dimension" },
+    "3": { "$value": "0.75rem", "$type": "dimension" },
+    "4": { "$value": "1rem", "$type": "dimension" },
+    "5": { "$value": "1.5rem", "$type": "dimension" },
+    "6": { "$value": "2rem", "$type": "dimension" },
+    "7": { "$value": "3rem", "$type": "dimension" },
+    "8": { "$value": "4rem", "$type": "dimension" },
+    "9": { "$value": "6rem", "$type": "dimension" },
+    "10": { "$value": "8rem", "$type": "dimension" },
+    "section": { "$value": "clamp(4rem, 8vw, 8rem)", "$type": "dimension", "$description": "Separación vertical entre secciones" },
+    "gutter": { "$value": "clamp(1rem, 4vw, 2rem)", "$type": "dimension", "$description": "Margen lateral de página" }
+  },
+
+  "size": {
+    "container": {
+      "prose": { "$value": "42rem", "$type": "dimension" },
+      "content": { "$value": "72rem", "$type": "dimension" },
+      "wide": { "$value": "90rem", "$type": "dimension" }
+    },
+    "tarotCard": {
+      "aspectRatio": { "$value": "11 / 19", "$type": "string", "$description": "Proporción real Rider-Waite-Smith (2.75 × 4.75 in)" },
+      "sm": { "$value": "7.5rem", "$type": "dimension" },
+      "md": { "$value": "11rem", "$type": "dimension" },
+      "lg": { "$value": "16rem", "$type": "dimension" }
+    },
+    "runeTile": {
+      "aspectRatio": { "$value": "3 / 4", "$type": "string" },
+      "md": { "$value": "6rem", "$type": "dimension" }
+    },
+    "tapTarget": { "$value": "2.75rem", "$type": "dimension", "$description": "44px mínimo" },
+    "icon": {
+      "sm": { "$value": "1rem", "$type": "dimension" },
+      "md": { "$value": "1.5rem", "$type": "dimension" },
+      "lg": { "$value": "2.5rem", "$type": "dimension" }
+    }
+  },
+
+  "radius": {
+    "none": { "$value": "0", "$type": "dimension" },
+    "sm": { "$value": "4px", "$type": "dimension", "$description": "Badges, inputs" },
+    "md": { "$value": "8px", "$type": "dimension", "$description": "Paneles, láminas" },
+    "card": { "$value": "12px", "$type": "dimension", "$description": "Cartas de tarot" },
+    "pill": { "$value": "9999px", "$type": "dimension", "$description": "Solo chips de filtro" },
+    "arch": { "$value": "9999px 9999px 8px 8px", "$type": "string", "$description": "Marco de arco: hero, portada de herramienta, CTA de lectura" }
+  },
+
+  "border": {
+    "hairline": { "$value": "1px solid {color.alpha.goldHairline}", "$type": "string" },
+    "gold": { "$value": "1px solid {color.gold.500}", "$type": "string" },
+    "engravedInset": { "$value": "6px", "$type": "dimension", "$description": "outline-offset negativo para el doble filete grabado" }
+  },
+
+  "shadow": {
+    "raised": { "$value": "0 12px 32px -8px {color.alpha.shadow}", "$type": "shadow" },
+    "glowSm": { "$value": "0 0 12px {color.alpha.goldGlow}", "$type": "shadow" },
+    "glowMd": { "$value": "0 0 32px {color.alpha.goldGlow}", "$type": "shadow", "$description": "Solo para el elemento revelado (carta, runa)" },
+    "candle": { "$value": "0 0 48px 8px rgba(230, 180, 100, 0.18)", "$type": "shadow" }
+  },
+
+  "gradient": {
+    "nebula": { "$value": "radial-gradient(ellipse 60% 45% at 30% 20%, color-mix(in srgb, var(--realm-nebula) 38%, transparent), transparent 70%), radial-gradient(ellipse 50% 40% at 75% 80%, color-mix(in srgb, {color.aura.teal} 22%, transparent), transparent 70%)", "$type": "string" },
+    "goldFoil": { "$value": "linear-gradient(135deg, #8A6A30 0%, #E6CC8F 42%, #C9A961 58%, #9C7A3C 100%)", "$type": "string", "$description": "Solo texto display con background-clip y color de respaldo" },
+    "vignette": { "$value": "radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.45) 100%)", "$type": "string" }
+  },
+
+  "motion": {
+    "duration": {
+      "fast": { "$value": "150ms", "$type": "duration" },
+      "base": { "$value": "250ms", "$type": "duration" },
+      "slow": { "$value": "600ms", "$type": "duration" },
+      "reveal": { "$value": "900ms", "$type": "duration", "$description": "Volteo de carta, aparición de runa" },
+      "twinkleMin": { "$value": "4s", "$type": "duration" },
+      "twinkleMax": { "$value": "9s", "$type": "duration" }
+    },
+    "easing": {
+      "out": { "$value": [0.22, 1, 0.36, 1], "$type": "cubicBezier" },
+      "inOut": { "$value": [0.65, 0, 0.35, 1], "$type": "cubicBezier" },
+      "linear": { "$value": [0, 0, 1, 1], "$type": "cubicBezier" }
+    }
+  },
+
+  "ornament": {
+    "stroke": {
+      "hair": { "$value": "0.75", "$type": "number" },
+      "fine": { "$value": "1.25", "$type": "number" },
+      "bold": { "$value": "2", "$type": "number" }
+    },
+    "starfield": {
+      "density": { "$value": 0.00012, "$type": "number", "$description": "Estrellas por px² en el fondo" },
+      "opacityMin": { "$value": 0.25, "$type": "number" },
+      "opacityMax": { "$value": 0.85, "$type": "number" },
+      "twinkleShare": { "$value": 0.08, "$type": "number", "$description": "Porción de estrellas que titilan. 0 con prefers-reduced-motion" }
+    },
+    "maxFocalPerViewport": { "$value": 1, "$type": "number" }
+  },
+
+  "breakpoint": {
+    "xs": { "$value": "320px", "$type": "dimension" },
+    "sm": { "$value": "480px", "$type": "dimension" },
+    "md": { "$value": "768px", "$type": "dimension" },
+    "lg": { "$value": "1024px", "$type": "dimension" },
+    "xl": { "$value": "1280px", "$type": "dimension" },
+    "2xl": { "$value": "1536px", "$type": "dimension" }
+  },
+
+  "z": {
+    "starfield": { "$value": -1, "$type": "number" },
+    "base": { "$value": 0, "$type": "number" },
+    "raised": { "$value": 10, "$type": "number" },
+    "sticky": { "$value": 100, "$type": "number" },
+    "overlay": { "$value": 900, "$type": "number" },
+    "modal": { "$value": 1000, "$type": "number" },
+    "toast": { "$value": 1100, "$type": "number" }
+  },
+
+  "focus": {
+    "ring": { "$value": "2px solid {color.gold.300}", "$type": "string" },
+    "ringOnLight": { "$value": "2px solid {color.aura.purple}", "$type": "string" },
+    "offset": { "$value": "3px", "$type": "dimension" }
+  },
+
+  "component": {
+    "button": {
+      "height": { "$value": "3rem", "$type": "dimension" },
+      "paddingX": { "$value": "{space.6}", "$type": "dimension" },
+      "radius": { "$value": "{radius.sm}", "$type": "dimension" },
+      "primary": {
+        "bg": { "$value": "{color.gold.500}", "$type": "color" },
+        "bgHover": { "$value": "{color.gold.300}", "$type": "color" },
+        "text": { "$value": "{color.plum.900}", "$type": "color" }
+      },
+      "secondary": {
+        "bg": { "$value": "transparent", "$type": "color" },
+        "border": { "$value": "{color.gold.500}", "$type": "color" },
+        "text": { "$value": "{color.parchment.200}", "$type": "color" },
+        "bgHover": { "$value": "{color.alpha.goldFaint}", "$type": "color" }
+      },
+      "aura": {
+        "bg": { "$value": "{color.aura.purple}", "$type": "color" },
+        "text": { "$value": "{color.parchment.200}", "$type": "color" },
+        "border": { "$value": "{color.gold.500}", "$type": "color" }
+      }
+    },
+    "input": {
+      "height": { "$value": "3rem", "$type": "dimension" },
+      "bg": { "$value": "color-mix(in srgb, var(--realm-surface) 70%, transparent)", "$type": "string" },
+      "border": { "$value": "{color.alpha.goldHairline}", "$type": "color" },
+      "borderFocus": { "$value": "{color.gold.300}", "$type": "color" },
+      "radius": { "$value": "{radius.sm}", "$type": "dimension" },
+      "placeholder": { "$value": "{color.parchment.500}", "$type": "color" }
+    },
+    "plate": {
+      "$description": "Lámina: contenedor de resultados y tarjetas. Doble filete grabado.",
+      "bg": { "$value": "var(--realm-surface)", "$type": "string" },
+      "border": { "$value": "{border.hairline}", "$type": "string" },
+      "innerRule": { "$value": "1px solid {color.alpha.goldFaint}", "$type": "string" },
+      "radius": { "$value": "{radius.md}", "$type": "dimension" },
+      "padding": { "$value": "clamp(1.5rem, 4vw, 3rem)", "$type": "dimension" }
+    },
+    "tarotCard": {
+      "radius": { "$value": "{radius.card}", "$type": "dimension" },
+      "border": { "$value": "1px solid {color.gold.500}", "$type": "string" },
+      "back": { "$value": "{color.plum.800}", "$type": "color", "$description": "Reverso: astrolabio dorado sobre ciruela" },
+      "revealShadow": { "$value": "{shadow.glowMd}", "$type": "shadow" }
+    },
+    "badge": {
+      "height": { "$value": "1.75rem", "$type": "dimension" },
+      "radius": { "$value": "{radius.sm}", "$type": "dimension" },
+      "text": { "$value": "{color.parchment.200}", "$type": "color" },
+      "textOnBeige": { "$value": "{color.plum.900}", "$type": "color" }
+    },
+    "nav": {
+      "height": { "$value": "4.5rem", "$type": "dimension" },
+      "bg": { "$value": "color-mix(in srgb, var(--realm-bg) 85%, transparent)", "$type": "string" },
+      "blur": { "$value": "12px", "$type": "dimension" }
+    }
+  }
+}

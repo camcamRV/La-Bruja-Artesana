@@ -1,0 +1,35 @@
+---
+import type { Lang } from '../i18n/ui';
+import { t } from '../i18n/utils';
+import Base from '../components/layout/Base.astro';
+import logo from '../../design/BA_LOGO.svg?raw';
+
+interface Props { lang: Lang }
+
+const { lang } = Astro.props;
+const tr = t(lang);
+---
+<Base lang={lang} routeId="home">
+  <section class="hero container">
+    <h1 class="logo" set:html={logo} />
+    <p class="lead">{tr('home.lead')}</p>
+    <p class="soon">{tr('home.soon')}</p>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: var(--space-5);
+    padding-block: var(--space-section);
+  }
+  .logo { margin: 0; width: min(100%, 36rem); color: var(--realm-accent); }
+  .logo :global(svg) { width: 100%; height: auto; }
+  .lead {
+    margin: 0;
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    line-height: 1.55;
+  }
+  .soon { margin: 0; color: var(--realm-text-muted); max-width: var(--font-measure-narrow); }
+</style>

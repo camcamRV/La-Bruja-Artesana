@@ -1,0 +1,7 @@
+/* Los colores de pergamino en impresión vienen de tokens.css (@media print). */
+@media print {
+  body { background: none; font-size: 12pt; }
+  .site-header, .site-footer nav, .skip-link, [data-print="hide"], .ornament-focal { display: none !important; }
+  a { color: inherit; text-decoration: underline; }
+  main { padding: 0; }
+}
